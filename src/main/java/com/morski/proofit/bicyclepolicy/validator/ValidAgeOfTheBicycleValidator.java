@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.time.Year;
 
-public class ValidAgeOfTheBicycleValidator implements ConstraintValidator<ValidAgeOfTheBicycle.ValidAge, Integer> {
+public class ValidAgeOfTheBicycleValidator implements ConstraintValidator<ValidAgeOfTheBicycle.Valid, Integer> {
 
     @Value("${max.age.of.bicycle}")
     private int maxAgeOfBicycle;

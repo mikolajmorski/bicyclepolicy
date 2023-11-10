@@ -5,6 +5,8 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
-public record PolicyRequestDTO(@Valid List<Bicycle> bicycles) {
+public record PolicyRequestDTO(@Valid
+                               List<Bicycle> bicycles) {
 
 }
+

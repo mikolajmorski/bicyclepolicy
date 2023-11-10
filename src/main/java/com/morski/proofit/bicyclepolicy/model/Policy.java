@@ -4,15 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 
-import java.time.Year;
 import java.util.ArrayList;
 
 @Getter
 @JsonPropertyOrder({"attributes", "coverageType"})
 public class Policy {
-
-    private static final int CURRENT_YEAR = Year.now().getValue();
-
     @JsonProperty("attributes")
     private final BicycleDetails bicycleDetails;
 
@@ -42,9 +38,9 @@ public class Policy {
         private final String make;
 
         public BicycleDetails(Bicycle bicycle) {
-            this.manufactureYear = bicycle.manufactureYear();
-            this.model = bicycle.model();
-            this.make = bicycle.make();
+            this.manufactureYear = bicycle.getManufactureYear();
+            this.model = bicycle.getModel();
+            this.make = bicycle.getMake();
         }
 
     }

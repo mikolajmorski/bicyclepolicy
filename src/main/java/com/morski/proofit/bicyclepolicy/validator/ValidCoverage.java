@@ -5,14 +5,14 @@ import jakarta.validation.Payload;
 
 import java.lang.annotation.*;
 
-public interface ValidAgeOfTheBicycle extends Annotation {
+public interface ValidCoverage extends Annotation {
 
     @Target({ElementType.FIELD})
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
-    @Constraint(validatedBy = ValidAgeOfTheBicycleValidator.class)
+    @Constraint(validatedBy = ValidCoverageValidator.class)
     @interface Valid {
-        String message() default "Wrong manufactureYear. Bicycle can not be older than %s years and newer than current year %s.";
+        String message() default "Wrong coverage. Coverage can bo only {0}.";
 
         Class<?>[] groups() default {};
 
