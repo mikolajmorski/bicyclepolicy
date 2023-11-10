@@ -5,6 +5,7 @@ import com.morski.proofit.bicyclepolicy.dto.response.PolicyResponseDTO;
 import com.morski.proofit.bicyclepolicy.model.Bicycle;
 import com.morski.proofit.bicyclepolicy.model.Policy;
 import com.morski.proofit.bicyclepolicy.model.Risk;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ import java.util.Random;
 public class CalculateController {
 
     @PostMapping("/calculate")
-    public PolicyResponseDTO calculate(@RequestBody PolicyRequestDTO policyRequestDTO) {
+    public PolicyResponseDTO calculate(@Valid @RequestBody PolicyRequestDTO policyRequestDTO) {
         ArrayList<Policy> policies = createPolicies(policyRequestDTO.bicycles());
         double premium = policies.stream().mapToDouble(Policy::getPremium).sum();
         return new PolicyResponseDTO(policies, premium);
