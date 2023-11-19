@@ -4,12 +4,14 @@ import com.morski.proofit.bicyclepolicy.service.GroovyService;
 import groovy.util.ResourceException;
 import groovy.util.ScriptException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 public class RiskBasePremiumFactor {
     private final GroovyService groovyService;
