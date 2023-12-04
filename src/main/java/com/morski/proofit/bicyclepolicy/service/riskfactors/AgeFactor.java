@@ -45,9 +45,8 @@ public class AgeFactor {
         int entryValueFrom = (int) entry.get("VALUE_FROM");
         int entryValueTo = (int) entry.get("VALUE_TO");
 
-        // Check if the make, model, and age match
-        boolean makeMatches =  entryMake!= null && make.equalsIgnoreCase(entryMake);
-        boolean modelMatches = entryModel != null && model.equalsIgnoreCase(entryModel);
+        boolean makeMatches =  make.equalsIgnoreCase(entryMake);
+        boolean modelMatches = model.equalsIgnoreCase(entryModel);
         boolean ageMatches = ageActual >= entryValueFrom && ageActual <= entryValueTo;
 
         return makeMatches && modelMatches && ageMatches;
@@ -58,8 +57,7 @@ public class AgeFactor {
         int entryValueFrom = (int) entry.get("VALUE_FROM");
         int entryValueTo = (int) entry.get("VALUE_TO");
 
-        // Check if the make and age match
-        boolean makeMatches =  entryMake!= null && make.equalsIgnoreCase(entryMake);
+        boolean makeMatches =  make.equalsIgnoreCase(entryMake);
         boolean ageMatches = ageActual >= entryValueFrom && ageActual <= entryValueTo;
 
         return makeMatches && ageMatches;
@@ -69,16 +67,13 @@ public class AgeFactor {
         String entryMake = (String) entry.get("MAKE");
         String entryModel = (String) entry.get("MODEL");
 
-        // Check if make and model are empty, then check age
         if ((entryMake == null || entryMake.isEmpty()) && (entryModel == null || entryModel.isEmpty())) {
             int entryValueFrom = (int) entry.get("VALUE_FROM");
             int entryValueTo = (int) entry.get("VALUE_TO");
 
-            // Check if the age matches
             return ageActual >= entryValueFrom && ageActual <= entryValueTo;
         }
 
-        // Make and/or model are not empty, so return false
         return false;
     }
 

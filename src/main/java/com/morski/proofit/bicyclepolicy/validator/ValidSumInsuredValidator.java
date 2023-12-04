@@ -12,7 +12,6 @@ public class ValidSumInsuredValidator implements ConstraintValidator<ValidSumIns
     @Override
     public boolean isValid(Double value, ConstraintValidatorContext context) {
 
-        // leave null-checking to @NotNull
         if (value == null) {
             return true;
         }

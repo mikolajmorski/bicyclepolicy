@@ -28,30 +28,26 @@ public class GroovyService {
 
 
     public ArrayList<LinkedHashMap<String, Serializable>> getAgeFactorData() throws ScriptException, ResourceException {
-        Object result = engine
-                .createScript(NAME_OF_SCRIPT, new Binding())
-                .invokeMethod("getAgeFactorData", new Object[]{});
-        return (ArrayList<LinkedHashMap<String, Serializable>>) result;
+        return getData("getAgeFactorData");
     }
 
     public ArrayList<LinkedHashMap<String, Serializable>> getRiskCountFactorData() throws ScriptException, ResourceException {
-        Object result = engine
-                .createScript(NAME_OF_SCRIPT, new Binding())
-                .invokeMethod("getRiskCountFactorData", new Object[]{});
-        return (ArrayList<LinkedHashMap<String, Serializable>>) result;
+        return getData("getRiskCountFactorData");
+
     }
 
     public ArrayList<LinkedHashMap<String, Serializable>> getSumInsuredFactorData() throws ScriptException, ResourceException {
-        Object result = engine
-                .createScript(NAME_OF_SCRIPT, new Binding())
-                .invokeMethod("getSumInsuredFactorData", new Object[]{});
-        return (ArrayList<LinkedHashMap<String, Serializable>>) result;
+        return getData("getSumInsuredFactorData");
     }
 
     public ArrayList<LinkedHashMap<String, Serializable>> getRiskBasePremiumData() throws ScriptException, ResourceException {
+        return getData("getRiskBasePremiumData");
+    }
+
+    private ArrayList<LinkedHashMap<String, Serializable>> getData(String methodName) throws ScriptException, ResourceException {
         Object result = engine
                 .createScript(NAME_OF_SCRIPT, new Binding())
-                .invokeMethod("getRiskBasePremiumData", new Object[]{});
+                .invokeMethod(methodName, new Object[]{});
         return (ArrayList<LinkedHashMap<String, Serializable>>) result;
     }
 

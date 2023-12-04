@@ -11,17 +11,16 @@ public class ValidAgeOfTheBicycleValidator implements ConstraintValidator<ValidA
     @Value("${max.age.of.bicycle}")
     private int maxAgeOfBicycle;
 
-    int current_year = Year.now().getValue();
+    int currentYear = Year.now().getValue();
 
     @Override
     public boolean isValid(Integer value, ConstraintValidatorContext context) {
 
-        // leave null-checking to @NotNull
         if (value == null) {
             return true;
         }
         formatMessage(context);
-        int ageOfBicycle = current_year - value;
+        int ageOfBicycle = currentYear - value;
         boolean isNotToOld = ageOfBicycle <= maxAgeOfBicycle;
         boolean isNotToYoung = ageOfBicycle >= 0;
         return isNotToOld && isNotToYoung;
@@ -29,7 +28,7 @@ public class ValidAgeOfTheBicycleValidator implements ConstraintValidator<ValidA
 
     private void formatMessage(ConstraintValidatorContext context) {
         String msg = context.getDefaultConstraintMessageTemplate();
-        String formattedMsg = String.format(msg, this.maxAgeOfBicycle, this.current_year);
+        String formattedMsg = String.format(msg, this.maxAgeOfBicycle, this.currentYear);
         context.disableDefaultConstraintViolation();
         context.buildConstraintViolationWithTemplate(formattedMsg).addConstraintViolation();
     }
